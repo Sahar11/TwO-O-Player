@@ -1,4 +1,3 @@
-
 class Game
   attr_accessor :turn, :player1, :player2
 
@@ -6,13 +5,12 @@ class Game
     @turn = 1
     @player1 = 3
     @player2 = 3
-
-  end
-
+  end 
+  #byebug
   def game_over
-    puts "P1: #{@player1}/3 vs P2: #{@player2}/3."
-    puts "------- GAME OVER -------"
-    puts "Good bye!"
+    puts "Player 1: #{@player1}/3 lives. Player 2: #{@player2}/3 lives."
+    puts "------ GAME OVER ------"
+    puts "Goodbye!"
     exit(0)
   end
 
@@ -26,6 +24,7 @@ class Game
       game_over
     end
   end
+
   def update_turn(turn)
     if turn == 1
       @turn = 2
@@ -34,14 +33,15 @@ class Game
     end
     start
   end
+
   def start
-    puts "Player : #{@player1}/3 lives. Player 2: #{@player2}/3 lives."
+    puts "Player 1: #{@player1}/3 lives. Player 2: #{@player2}/3 lives."
     # create_players
     question = Question.new(turn)
-    if !question.quest
+    if !question.start
       update_lives(turn)
     end
     update_turn(turn)
   end
-
+  
 end
