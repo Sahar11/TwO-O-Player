@@ -1,32 +1,27 @@
 class Question
+  attr_accessor :turn
 
-  attr_accessor :correct
-
-  def initialize(current_player)
-    @num_1 = rand(20)
-    @num_2 = rand(20)
-    @answer = @num_1 + @num_2
-
-    puts "#{current_player}: What does #{@num_1} plus #{@num_2} equal?"
-    quest
-
-
+  def initialize(turn)
+    @turn = turn
   end
 
-  def quest
+  def start
+    num1 = rand(1..10)
+    num2 = rand(1..10)
 
-    @player_answer = gets.chomp
+    puts "------ NEW TURN ------"
+    puts "Player #{turn}: What is #{num1} + #{num2}?"
+    print "> "
 
-    if @player_answer == @answer.to_s
-      puts "YES! you are correct."
-      @correct = true
+    answer = gets.chomp.to_i
 
-    else
+    if answer == num1 + num2
+      puts "YES! You are correct."
+      return true
+    else 
       puts "Seriously! No."
-      @correct = false
-
+      return false
     end
-
   end
 
 end
