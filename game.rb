@@ -1,3 +1,4 @@
+require 'byebug'
 class Game
   attr_accessor :turn, :player1, :player2
 
